@@ -1,32 +1,68 @@
 require 'fizzbuzz'
 
 describe 'fizzbuzz' do 
-  it 'returns "Fizz" when passed 3' do
-    expect(fizzbuzz(3)).to eq 'Fizz'
+
+
+  1.upto 100 do |i|
+    if (i % 3 == 0) && (i % 5 != 0)
+      it 'return "Fizz" when passed a number that is a multiple of 3' do
+        expect(fizzbuzz(i)).to eq 'Fizz'
+      end
+    end
   end
 
-  it 'return "Buzz" when passed 5' do
-    expect(fizzbuzz(5)).to eq 'Buzz'
+  1.upto 100 do |i|
+    if (i % 5 == 0) && (i % 3 != 0)
+      it 'return "Buzz" when passed a number that is a multiple of 5' do
+        expect(fizzbuzz(i)).to eq 'Buzz'
+      end
+    end
   end
 
-  it 'return "FizzBuzz" when passed 15' do
-    expect(fizzbuzz(15)).to eq 'FizzBuzz'
+  1.upto 100 do |i|
+    if (i % 5 == 0) && (i % 3 == 0)
+      it 'return "FizzBuzz" when passed a number that is a multiple of 5 and a multiple of 3' do
+        expect(fizzbuzz(i)).to eq 'FizzBuzz'
+      end
+    end
   end
 
-  it 'return 4 when passed 4' do
-    expect(fizzbuzz(4)).to eq 4
+  1.upto 100 do |i|
+    if (i % 5 != 0) && (i % 3 != 0)
+      it 'return the input number when passed a number that is not a multiple of 5 or a multiple of 3' do
+        expect(fizzbuzz(i)).to eq i
+      end
+    end
   end
 
-  it 'return "Fizz" when passed 27' do
-    expect(fizzbuzz(27)).to eq 'Fizz'
+  (2**126).upto ((2**126)+100) do |i|
+    if (i % 3 == 0) && (i % 5 != 0)
+      it 'return "Fizz" when passed a number that is a multiple of 3' do
+        expect(fizzbuzz(i)).to eq 'Fizz'
+      end
+    end
   end
 
- it 'return "Fizz" when passed 55' do
-    expect(fizzbuzz(55)).to eq 'Buzz'
+  (2**126).upto ((2**126)+100) do |i|
+    if (i % 5 == 0) && (i % 3 != 0)
+      it 'return "Buzz" when passed a number that is a multiple of 5' do
+        expect(fizzbuzz(i)).to eq 'Buzz'
+      end
+    end
   end
 
- it 'return "Fizz" when passed 30' do
-    expect(fizzbuzz(30)).to eq 'FizzBuzz'
+  (2**126).upto ((2**126)+100) do |i|
+    if (i % 5 == 0) && (i % 3 == 0)
+      it 'return "FizzBuzz" when passed a number that is a multiple of 5 and a multiple of 3' do
+        expect(fizzbuzz(i)).to eq 'FizzBuzz'
+      end
+    end
+  end
+
+  [[],"", {}].each do |i|
+    it 'return "Wrong format" when passed an array, string or hash' do
+      expect(fizzbuzz(i)).to eq "Wrong format"
+    end
   end
 
 end
