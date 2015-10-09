@@ -1,15 +1,26 @@
-def fizzbuzz(number)
-  if (number.class == Fixnum) || (number.class == Bignum) ||(number.class == Float)
-    if (number % 3 == 0) && (number % 5 == 0)
+ 
+module FizzbuzzModule
+  def fizzbuzz
+    if (self % 3 == 0) && (self % 5 == 0)
       "FizzBuzz"
-    elsif number % 3 == 0
+    elsif self % 3 == 0
       "Fizz"
-    elsif number % 5 == 0
+    elsif self % 5 == 0
       "Buzz"
-    else 
-      number
+    else
+      self
     end
-  else
-    'Wrong format'
-  end  
+  end
+end
+
+class Fixnum
+  include FizzbuzzModule
+end
+
+class Bignum
+  include FizzbuzzModule
+end
+
+class Float
+  include FizzbuzzModule
 end
